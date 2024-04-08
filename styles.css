@@ -2,12 +2,42 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
-
 header {
-    text-align:center;
-    font-style: unset;
+    display: flex;
+    justify-content: space-between; /* Logo on the right, text in the center */
+    align-items: center; /* Vertically center content */
     padding: 10px;
-    background-color: #dfdddd
+    background-color: #f5f5dc; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+    
+}
+
+.logo_container {
+    display: flex;
+    align-items: center; /* Vertically center content */
+}
+
+.logo {
+    margin-left: auto; /* Push logo to the right */
+    width: 100px;
+}
+
+h1 {
+    margin-left: 455px; /* Remove default margin */
+    font-family: 'Playfair Display', serif;
+    color: #556b2f;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 80px; /* Adjust logo size for mobile */
+    }
+    h1 {
+        font-size: 16px; /* Decrease font size for mobile */
+        text-align: center; /* Center text */
+        margin-left: 50px; 
+    }
+    
 }
 
 /* arrow trigger start from here */
@@ -117,63 +147,85 @@ header {
 
 .gallery{
     display: flex;
-    gap: 1em;
-    padding-top: 10px;
-    overflow-x: auto ;
-    padding: 2em 2em;
-    background-color: rgb(241, 118, 118);
+    gap: 0.3em;
+    padding: 2em 0;
+    background-color: rgba(145, 88, 88, 0.459);
+    overflow-x: auto; 
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+    white-space: nowrap; 
 }
 
 .gallery::-webkit-scrollbar{
-    width: 6;
+    display: none;
 }
 
 .item{
     display: flex;
-    min-width: 120px;
+    min-width: 200px; 
+    flex: 0 0 auto; 
+    width: 150px; 
     height: auto;
     position: relative;
-    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden; 
+    margin-left: 10px;
+    margin-right: 10px;
+
 }
 
 .item img{
     width: 100%;
     height: auto;
-    display: block;
+    /* display: block; */
+    border-radius: 10px;
+    transition:all.5s;
+
 }
 
 .gallery>div{
     flex: 1;
     overflow: hidden;
-    border-radius: 1rem;
+    border-radius: 10px;
 }
 
-.gallery{
-    display: flex;
-}
-img{
+
+/* img{
     width: 100%;
     transition:all.5s;
-}
-img:hover{
+} */
+.item img:hover{
     transform: scale(1.5) rotate(12deg);
 }
 
 .overlay_1 {
     position: absolute;
-    left: -120%;
-    bottom: 0;
+    left: 0;
+    bottom: -100%; /* Start off-screen below */
     width: 100%;
-    background-color: rgba(74, 72, 72, 0.5); /* Overlay background color */
+    background-color: rgba(74, 72, 72, 0.5);
     color: rgb(245, 235, 235);
     padding: 10px;
-    transition: left 0.3s ease;
-    text-align:justify;
-   
+    transition: bottom 0.3s ease; /* Smooth transition for bottom position */
+    text-align: justify;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .item:hover .overlay_1 {
-    left: 0;
+    bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .item {
+        min-width: 120px; 
+        width: 150px; 
+    }
+    .overlay_1 {
+        font-size: 11px; 
+    }
 }
 
 .container {
@@ -181,20 +233,16 @@ img:hover{
     width: 50%;
   }
   
-.menu_table{
+/* .menu_table{
     background-image: url(./foodmenu/sushi_bg.jpg);
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     background-position: center center;
-}
+} */
 
 table{
     background-color: rgb(249, 250, 250); /* Fully opaque background color */
     transition: background-color 3s cubic-bezier(0.39, 0.575, 0.565, 1);
-}
-
-table:hover{
-    background-color: rgba(184, 91, 91, 0.6); /* Semi-transparent background color */
 }
 
 
@@ -202,7 +250,8 @@ table {
     width: 100%;
     border-block-width: inherit;
     margin-top: 8px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    background-color: rgba(74, 72, 72, 0.3); /* Transparent background */
 }
 
 tbody tr:hover{
@@ -217,8 +266,8 @@ td{
 
 th{
     padding: 8px;
-    background-color: #216e6e;
-    color: #141414; /* Set the text color for th elements */
+    background-color: rgba(145, 88, 88, 0.459);
+    color: whitesmoke; /* Set the text color for th elements */
 }
 
 .order{
@@ -354,22 +403,26 @@ section {
     margin-top: 20px;
 }
 
-button{
-    width: 120px;
-    height: 40px;
-    font-size: large;
-    background-color: #065f85;
-    color: white;
-    border-radius: 6px;
-    border: 2px solid black;
-    transition: 2s ease-in-out;
-}
-
-button:hover{
- background-color: #fff;
- color: #065f85;
-}
-
+button {
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    transition: all 0.3s;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  }
+  
+  button:hover {
+    border: 1px solid white;
+  }
+  
+  button:active {
+    box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+  }
+  
 .QRcode{
     width: 80px;
     height: 120px;
